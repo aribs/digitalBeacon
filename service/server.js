@@ -2,10 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-app.use(bodyParser.urlencoded({ extended: true }));
-app.set('trust proxy', true)
+const pug = require('pug');
 const config = require ('./config');
 const auxFunctions = require('./auxFunctions.js');
+
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.set('trust proxy', true)
+app.set('view engine', 'pug');
+var path = require('path');
+app.use("/images", express.static(path.join(__dirname, './images')));
+
 
 
 
@@ -20,6 +27,12 @@ app.get('/get-data', async (req, res) => {
     console.log(ipInfo);
     res.status(200).send("OK")
   });
+  app.get('/foto', (req, res)=>{
+    res.render(
+        'index',
+        { title: 'PUG with Express', message: 'Hello from educative!'}
+    )
+});
 
 // Listen to the App Engine-specified port, or 80 otherwise
 const PORT = process.env.PORT || 80;
