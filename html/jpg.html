@@ -3,25 +3,12 @@
     <meta property="og:image" content="fotito.jpg" />
     <meta property="og:title" content="fotito.jpg" />
     <script>
-      const xhr = new XMLHttpRequest();
-      xhr.open("GET", "https://www.cloudflare.com/cdn-cgi/trace");
-      xhr.responseType = "text/plain";
-      xhr.send();
-      xhr.onload = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          console.log(xhr.response);
-          sendData(xhr.response);
-        } else {
-          console.log(`Error: ${xhr.status}`);
-        }
-      };
-      function sendData(data) {
-        var xhr = new XMLHttpRequest();
-        var url = 'http://localhost:8080/get-data';
-        var params = data;
+      var xhr = new XMLHttpRequest();
+        var url = '';
+        var params = "";
+        
         xhr.open('POST', url, true);
-
-        //Send the proper header information along with the request
+        xhr.setRequestHeader('Access-Control-Allow-Origin','*');
         xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
         xhr.onreadystatechange = function() {//Call a function when the state changes.
@@ -30,7 +17,6 @@
             }
         }
         xhr.send(params);
-      }
 
   </script>
   </head>

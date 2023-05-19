@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('trust proxy', true)
 
 
 
@@ -13,7 +14,7 @@ app.get('/', (req, res) => {
 app.post('/get-data', (req, res) => {
     console.log(req.body)
     console.log("enter post")
-    const ip = req.headers.host
+    const ip = req.ip
     console.log(ip)
     res.status(200).send("OK")
   });
