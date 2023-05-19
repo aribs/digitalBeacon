@@ -13,6 +13,8 @@ app.get('/', (req, res) => {
 app.post('/get-data', (req, res) => {
     console.log(req.body)
     console.log("enter post")
+    const ip = req.headers.host
+    console.log(ip)
     res.status(200).send("OK")
   });
 
