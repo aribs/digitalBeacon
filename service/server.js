@@ -4,7 +4,8 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('trust proxy', true)
-var auxFunctions = require('./auxFunctions.js')
+const config = require ('./config');
+const auxFunctions = require('./auxFunctions.js');
 
 
 
@@ -12,10 +13,11 @@ app.get('/', (req, res) => {
   res.send('Hello');
 });
 
-app.get('/get-data', (req, res) => {
+app.get('/get-data', async (req, res) => {
     var bruteIp = req.ip
     cleanIp = auxFunctions.cleanIp(bruteIp);
-    console.log(cleanIp)
+    var ipInfo = await auxFunctions.getIPInfo(cleanIp);
+    console.log(ipInfo);
     res.status(200).send("OK")
   });
 
