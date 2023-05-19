@@ -5,6 +5,7 @@ const app = express();
 const pug = require('pug');
 const config = require ('./config');
 const auxFunctions = require('./auxFunctions.js');
+var cors = require('cors');
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -12,7 +13,7 @@ app.set('trust proxy', true)
 app.set('view engine', 'pug');
 var path = require('path');
 app.use("/images", express.static(path.join(__dirname, './images')));
-
+app.use(cors());
 
 
 
