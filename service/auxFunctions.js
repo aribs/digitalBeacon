@@ -1,5 +1,6 @@
 const config = require ('./config');
 const axios = require('axios');
+const pages = require('./configPages');
 
 cleanIp = function (text) {
   const regx = new RegExp(/(?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d{1})\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d{1})/g)
@@ -24,9 +25,17 @@ mountApiUrl = function (ip) {
   return config.ipApiKeyUrl + ip  + '?access_key=' + config.ipApiKey;
 }
 
+getPageInfo = function (pageName) {
+  if(pages[`${pageName}`]) {
+    return pages[`${pageName}`];
+  }
+  else return pages.default;
+}
+
 
 
 module.exports = {
   cleanIp,
-  getIPInfo
+  getIPInfo,
+  getPageInfo
 }

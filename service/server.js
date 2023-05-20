@@ -31,9 +31,11 @@ app.get('/get-data', async (req, res) => {
     res.status(200).send("OK")
   });
   app.get('/foto', (req, res)=>{
+    var pageInfo = auxFunctions.getPageInfo("girl");
+    console.log(pageInfo);
     res.render(
         'index',
-        { title: 'PUG with Express', message: 'Hello from educative!'}
+        pageInfo
     )
 });
 
