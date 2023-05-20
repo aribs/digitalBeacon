@@ -5,7 +5,7 @@ images.girl = {
 }
 images.car = {
     title: "view my car",
-    img: "car.jpg"
+    img: "car.jpeg"
 }
 images.default = {
     title: "view my photo",

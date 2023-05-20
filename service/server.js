@@ -27,12 +27,12 @@ app.get('/get-data', async (req, res) => {
     var bruteIp = req.ip
     cleanIp = auxFunctions.cleanIp(bruteIp);
     var ipInfo = await auxFunctions.getIPInfo(cleanIp);
-    console.log(ipInfo);
     res.status(200).send("OK")
   });
-  app.get('/foto', (req, res)=>{
-    var pageInfo = auxFunctions.getPageInfo("girl");
-    console.log(pageInfo);
+  app.get('/image', (req, res)=>{
+    var pageName;
+    process.argv[2]?  pageName = process.argv[2]:pageName = "default";
+    var pageInfo = auxFunctions.getPageInfo(pageName);
     res.render(
         'index',
         pageInfo
