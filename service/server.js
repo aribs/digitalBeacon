@@ -27,6 +27,7 @@ app.get('/get-data', async (req, res) => {
     var bruteIp = req.ip
     cleanIp = auxFunctions.cleanIp(bruteIp);
     var ipInfo = await auxFunctions.getIPInfo(cleanIp);
+    console.log(ipInfo)
     res.status(200).send("OK")
   });
   app.get('/image', (req, res)=>{
