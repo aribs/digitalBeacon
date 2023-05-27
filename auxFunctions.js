@@ -3,8 +3,9 @@ const axios = require('axios');
 const pages = require('./configPages');
 
 cleanIp = function (text) {
+  if(!text) return; 
   const regx = new RegExp(/(?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d{1})\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d{1})/g)
-  return text.match(regx)[0];
+  if(text.match(regx)) return text.match(regx)[0];
 }
 
  getIPInfo = async function (ip) {  

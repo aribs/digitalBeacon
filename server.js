@@ -28,7 +28,7 @@ app.get('/get-data', async (req, res) => {
     cleanIp = auxFunctions.cleanIp(bruteIp);
     var ipInfo = await auxFunctions.getIPInfo(cleanIp);
     var virusTotalInfo = await auxFunctions.getVirusTotalInfo(cleanIp);
-    var virusTotalInfo = await auxFunctions.getVirusTotalInfo("217.160.114.154");
+    var virusTotalInfo = await auxFunctions.getVirusTotalInfo(cleanIp);
     console.log(ipInfo)
     console.log(virusTotalInfo)
     console.log(virusTotalInfo.data.attributes.last_analysis_results)
