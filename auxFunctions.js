@@ -7,7 +7,7 @@ cleanIp = function (text) {
   return text.match(regx)[0];
 }
 
- getIPInfo = async function (ip) {
+ getIPInfo = async function (ip) {  
   var url = mountApiUrl(ip)
   if(url) {
     try {
@@ -20,9 +20,31 @@ cleanIp = function (text) {
   } 
 }
 
+getVirusTotalInfo = async function (ip) {
+  var url = getVirustTotalUrl(ip);
+  if(url) {
+    try {
+      const response = await axios.get(url, {
+        headers: {
+         "x-apikey": config.virusTotalApiKey 
+        }
+      });
+      return response.data;
+    }
+    catch(error) {
+      console.log(error)
+    }
+  } 
+}
+
 mountApiUrl = function (ip) {
   if(!ip)return;
   return config.ipApiKeyUrl + ip  + '?access_key=' + config.ipApiKey;
+}
+
+getVirustTotalUrl = function(ip) {
+  if(!ip)return;
+  return config.virustTotalUrl + ip;
 }
 
 getPageInfo = function (pageName) {
@@ -37,5 +59,6 @@ getPageInfo = function (pageName) {
 module.exports = {
   cleanIp,
   getIPInfo,
-  getPageInfo
+  getPageInfo,
+  getVirusTotalInfo
 }

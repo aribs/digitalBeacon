@@ -1,4 +1,6 @@
 var config = {};
 config.ipApiKey = "";
-config.ipApiKeyUrl = "";
+config.ipApiKeyUrl = "http://api.ipapi.com/api/";
+config.virusTotalApiKey = "";
+config.virustTotalUrl = "https://www.virustotal.com/api/v3/ip_addresses/";
 module.exports = config;
