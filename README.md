@@ -14,7 +14,7 @@ You can add title and image, images saved in ./images
     img: "girl.jpg"
 }`
 
-###Run
+### Run
 Simple, use npm start {varOfImage}
 Example: 
     ***npm start girl***
